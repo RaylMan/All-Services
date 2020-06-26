@@ -1,0 +1,55 @@
+<h1>Производители</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+<div class="table-responsive">
+  <table *ngIf="tableMode; else create" class="table table-striped">
+    <thead>
+      <tr>
+        <td>Название</td>
+        <td>Описание</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of manufacturers">
+        <ng-template [ngIf]="manufacturer?.id != m.id" [ngIfElse]="edit">
+          <td>{{m.name}}</td>
+          <td>{{m.description}}</td>
+          <td>
+            <button class="btn btn-sm btn-primary m-1" (click)="editManufacturer(m)">Изменить</button>
+            <button class="btn btn-sm btn-danger m-1" (click)="delete(m)">Удалить</button>
+          </td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #edit>
+  <td>
+    <input type="text" [(ngModel)]="manufacturer.name" class="form-control ml-1" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="manufacturer.description" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success m-1" />
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning m-1" />
+  </td>
+</ng-template>
+
+
+<ng-template #create>
+  <div class="form-group m-1">
+    <label>Название</label>
+    <input type="text" [(ngModel)]="manufacturer.name" class="form-control" />
+  </div>
+  <div class="form-group m-1">
+    <label>Описание</label>
+    <input type="text" [(ngModel)]="manufacturer.description" class="form-control" />
+  </div>
+  <div>
+    <input type="button" value="Сохранить" (click)="save()" class="btn btn-success m-1" />
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning m-1" />
+  </div>
+</ng-template>
+

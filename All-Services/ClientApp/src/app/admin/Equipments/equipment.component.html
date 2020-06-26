@@ -1,0 +1,105 @@
+<h1>Типы оборудования</h1>
+
+<div class="row" *ngIf="tableMode">
+  <input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+  <div class="form-group ml-1">
+    <select #selectedType class="custom-select align-self-center ml-3"
+            (change)='onTypeSelected(selectedType.value, selectedManufacturer.value)'>
+      <option selected value="-1">Все типы</option>
+      <option *ngFor="let type of equipmentTypes" [value]="type.id">
+        {{type.name}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group ml-1">
+    <select #selectedManufacturer class="custom-select align-self-center ml-3"
+            (change)='onTypeSelected(selectedType.value, selectedManufacturer.value)'>
+      <option selected value="-1">Все производители</option>
+      <option *ngFor="let mf of manufacturers" [value]="mf.id">
+        {{mf.name}}
+      </option>
+    </select>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table *ngIf="tableMode; else create" class="table table-striped">
+    <thead>
+      <tr>
+        <td>Модель</td>
+        <td>Производитель</td>
+        <td>Тип</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of equipments">
+        <ng-template [ngIf]="equipment?.id != e.id" [ngIfElse]="edit">
+          <td>{{e?.model}}</td>
+          <td>{{e?.manufacturer.name}}</td>
+          <td>{{e?.equipmentType.name}}</td>
+          <td>
+            <button class="btn btn-sm btn-primary m-1" (click)="editEquipment(e)">Изменить</button>
+            <button class="btn btn-sm btn-danger m-1" (click)="delete(e)">Удалить</button>
+          </td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #edit>
+  <td>
+    <input type="text" [(ngModel)]="equipment.model" class="form-control" />
+  </td>
+  <td>
+    <select class="form-control" name="manufacturer" [(ngModel)]="equipment.manufacturerId">
+      <option *ngFor="let manufacturer of manufacturers" [value]="manufacturer.id">
+        {{manufacturer.name}}
+      </option>
+    </select>
+  </td>
+  <td>
+    <select class="form-control" name="eqType" [(ngModel)]="equipment.equipmentTypeId">
+      <option *ngFor="let equipmentType of equipmentTypes" [value]="equipmentType.id">
+        {{equipmentType.name}}
+      </option>
+    </select>
+  </td>
+
+  <td>
+    <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success m-1" />
+    <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning m-1" />
+  </td>
+</ng-template>
+
+
+<ng-template #create>
+  <div class="m-1">
+    <div class="form-group m-1">
+      <label>Модель</label>
+      <input type="text" [(ngModel)]="equipment.model" class="form-control" />
+    </div>
+    <div class="form-group m-1">
+      <label>Производитель</label>
+      <select class="form-control" name="manufacturer" [(ngModel)]="equipment.manufacturerId">
+        <option *ngFor="let manufacturer of manufacturers" [value]="manufacturer.id">
+          {{manufacturer.name}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group m-1">
+      <label>Тип оборудования</label>
+      <select class="form-control" name="eqType" [(ngModel)]="equipment.equipmentTypeId">
+        <option *ngFor="let equipmentType of equipmentTypes" [value]="equipmentType.id">
+          {{equipmentType.name}}
+        </option>
+      </select>
+    </div>
+    <div>
+      <input type="button" value="Сохранить" (click)="save()" class="btn btn-success m-1" />
+      <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning m-1" />
+    </div>
+  </div>
+</ng-template>
+

@@ -1,0 +1,33 @@
+<div class="container mt-2">
+  <div class="auth-wrapper col-sm-8 col-md-8 col-lg-6 mx-auto">
+    <h2>Авторизация</h2>
+    <form class="" [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="alert alert-danger" role="alert" *ngIf="errors.length > 0">
+        <ul style="margin-bottom: 0">
+          <li *ngFor="let error of errors">
+            {{error}}
+          </li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label>Номер телефона</label>
+        <input class="form-control " type="text" formControlName="telephone" placeholder="Телефон" />
+      </div>
+      <div class="alert alert-danger" *ngIf="loginForm.controls['telephone'].invalid && loginForm.controls['telephone'].touched">
+        <div *ngIf="loginForm.controls['telephone'].errors?.required">
+          Не указан номер телефона телефон
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Пароль</label>
+        <input class="form-control" type="password" formControlName="password" placeholder="Пароль" />
+      </div>
+      <div class="alert alert-danger" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+        Не указан пароль
+      </div>
+
+      <input class="btn btn-warning" type="submit" value="Войти" />
+    </form>
+  </div>
+</div>

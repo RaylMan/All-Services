@@ -1,0 +1,99 @@
+<div class="container mt-2">
+  <div class="auth-wrapper col-sm-8 col-md-8 col-lg-6 mx-auto">
+    <h2>Регистрация компании</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="alert alert-danger" role="alert" *ngIf="errors.length > 0">
+        <ul style="margin-bottom: 0">
+          <li *ngFor="let error of errors">
+            {{error}}
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-group">
+        <label>Название компании</label>
+        <input class="form-control" type="text" formControlName="name" placeholder="Название компании" />
+      </div>
+      <div class="alert alert-danger" *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched">
+        <div *ngIf="registerForm.controls['name'].errors?.required">
+          Не указан Email
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input class="form-control" type="email" formControlName="email" placeholder="example@email.com" />
+      </div>
+      <div class="alert alert-danger" *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+        <div *ngIf="registerForm.controls['email'].errors?.required">
+          Не указан Email
+        </div>
+      </div>
+
+      <div formArrayName="telephones">
+        <div *ngFor="let item of registerForm.controls.telephones.controls; let i = index" class="input-group mb-2">
+          <input class="form-control" type="tel" id="1" formControlName="{{i}}" placeholder="+79995556622" />
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="deleteTelephone(i)">Удалить</button>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: right">
+        <input class="btn btn-outline-secondary btn-sm mb-3" type="button" value="Добавить телефон" (click)="addTelephone()" />
+      </div>
+
+      <div formArrayName="addresses">
+        <div *ngFor="let item of registerForm.controls.addresses.controls; let i = index" class="input-group mb-2">
+          <input class="form-control" type="tel" id="1" formControlName="{{i}}" placeholder="Адрес {{i+1}}" />
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="deleteAddress(i)">Удалить</button>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: right">
+        <input class="btn btn-outline-secondary btn-sm" type="button" value="Добавить адресс" (click)="addAddress()" />
+      </div>
+
+
+      <div class="form-group">
+        <label>Полное описание</label>
+        <textarea class="form-control" formControlName="description" required></textarea>
+      </div>
+
+
+      <div class="form-group">
+        <label>Краткое описание</label>
+        <input class="form-control" type="text" formControlName="smallDescription" />
+      </div>
+
+
+      <div class="form-group">
+        <label>Сайт</label>
+        <input class="form-control" type="text" formControlName="webSiteUrl" placeholder="http://exemple.com/" />
+      </div>
+
+      <label>Логотип компании</label>
+      <div class="custom-file">
+        <input type="file" #fileInput class="custom-file-input" id="customFile" (change)="onFileSelected($event)">
+        <label class="custom-file-label" for="logo">{{fileName}}</label>
+      </div>
+
+      <label class="mt-2">Услуги</label>
+      <div formArrayName="types">
+        <div *ngFor="let item of registerForm.controls.types.controls; let i = index" class="input-group mt-1 mb-3">
+          <select class="form-control" formControlName="{{i}}">
+            <option *ngFor="let type of serviceTypes" [value]="type.id">{{type.name}}</option>
+          </select>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="deleteType(i)">Удалить</button>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: right">
+        <input class="btn btn-outline-secondary btn-sm" type="button" value="Добавить услугу" (click)="addType()" />
+      </div>
+
+      <input class="btn btn-warning mt-3" type="submit" value="Регистрация" />
+    </form>
+  </div>
+</div>

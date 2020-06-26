@@ -1,0 +1,34 @@
+<h1>Позьзователи</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Уровень доступа</th>
+        <th>Телефон</th>
+        <th>Email</th>
+        <th>Пароль</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Адрес</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of usersList">
+        <td>{{u.id}}</td>
+        <td>{{u.accessId}}</td>
+        <td>{{u.telephone}}</td>
+        <td>{{u.email}}</td>
+        <td>{{u.passwordHash}}</td>
+        <td>{{u.firstName}}</td>
+        <td>{{u.lastName}}</td>
+        <td>{{u.adress}}</td>
+        <td>
+          <button class="btn btn-sm btn-danger m-1" (click)="delete(u)">Удалить</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

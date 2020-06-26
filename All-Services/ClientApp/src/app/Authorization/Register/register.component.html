@@ -1,0 +1,84 @@
+<div class="container mt-2">
+  <div class="auth-wrapper col-sm-8 col-md-8 col-lg-6 mx-auto">
+    <h2>Регистрация</h2>
+    <form class="form-signin" [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="alert alert-danger" role="alert" *ngIf="errors.length > 0">
+        <ul style="margin-bottom: 0">
+          <li *ngFor="let error of errors">
+            {{error}}
+          </li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label>Номер телефона</label>
+        <input class="form-control" type="text" formControlName="telephone" placeholder="Телефон" />
+      </div>
+      <div class="alert alert-danger" *ngIf="registerForm.controls['telephone'].invalid && registerForm.controls['telephone'].touched">
+        <div *ngIf="registerForm.controls['telephone'].errors?.required">
+          Не указан номер телефона телефон
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Пароль</label>
+        <input class="form-control" type="password" formControlName="password" placeholder="Пароль" />
+      </div>
+      <div class="alert alert-danger" *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+        <div *ngIf="registerForm.controls['password'].errors?.required">
+          Введите пароль
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Повторите пароль</label><br />
+        <input class="form-control" type="password" formControlName="confirmPassword" placeholder="Пароль" />
+      </div>
+      <div class="alert alert-danger" *ngIf="registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].touched">
+        <div *ngIf="registerForm.controls['confirmPassword'].errors?.required">
+          Повторите пороль
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label><br />
+        <input class="form-control" type="email" formControlName="email" placeholder="example@email.com" />
+      </div>
+      <div class="alert alert-danger" *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+        <div *ngIf="registerForm.controls['email'].errors?.required">
+          Не указан Email
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Имя</label><br />
+        <input class="form-control" type="text" formControlName="firstName" placeholder="Имя" />
+      </div>
+      <div class="alert alert-danger" *ngIf="registerForm.controls['firstName'].invalid && registerForm.controls['firstName'].touched">
+        <div *ngIf="registerForm.controls['firstName'].errors?.required">
+          Не указано имя
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Фамилия</label><br />
+        <input class="form-control" type="text" formControlName="lastName" placeholder="Фамилия" />
+      </div>
+      <div class="alert alert-danger" *ngIf="registerForm.controls['lastName'].invalid && registerForm.controls['lastName'].touched">
+        <div *ngIf="registerForm.controls['lastName'].errors?.required">
+          Не указана фамилия
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Адрес</label><br />
+        <input class="form-control" type="text" formControlName="adress" placeholder="Адрес" />
+      </div>
+      <div class="alert alert-danger" *ngIf="registerForm.controls['adress'].invalid && registerForm.controls['adress'].touched">
+        <div *ngIf="registerForm.controls['adress'].errors?.required">
+          Не указан адрес
+        </div>
+      </div>
+      <input class="btn btn-warning" type="submit" value="Регистрация" />
+    </form>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+body{
+    margin: 0;
+}
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+.block {
+  min-width: 300px;
+  padding: 0 20px;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: rgba(255,10,29,1) !important;
+  box-shadow: none !important;
+}
+input.ng-invalid.ng-touched:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255,10,29,0.25) !important;
+}
+
+.home-type{
+    margin: 5px;
+    background-color: yellow;
+    width: 80px;
+    height: 80px;
+}
+.home-type-btn {
+  border: 0;
+  background: transparent;
+  margin-top: 7px;
+}

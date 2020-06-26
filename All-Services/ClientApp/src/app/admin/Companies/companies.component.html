@@ -1,0 +1,28 @@
+<h1>Компании</h1>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Название</th>
+        <th>Сайт</th>
+        <th>Описание</th>
+        <th>Краткое описание</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of companies">
+        <td>{{c.id}}</td>
+        <td>{{c.name}}</td>
+        <td>{{c.webSiteUrl}}</td>
+        <td>{{c.Description}}</td>
+        <td>{{c.smallDescription}}</td>
+        <td>
+          <button class="btn btn-sm btn-danger m-1" (click)="delete(c)">Удалить</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

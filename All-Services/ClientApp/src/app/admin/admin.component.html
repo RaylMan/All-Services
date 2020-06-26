@@ -1,0 +1,19 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="list-group col-sm-4 col-md-4 col-lg-2 col-xl-2">
+      <div class="ml-2">
+        <a [routerLink]="['/admin/access']" class="list-group-item list-group-item-action list-group-item-warning">Уровни доступа</a>
+        <a [routerLink]="['/admin/users']" class="list-group-item list-group-item-action list-group-item-warning">Пользователи</a>
+        <a [routerLink]="['/admin/companies']" class="list-group-item list-group-item-action list-group-item-warning">Компании</a>
+        <a [routerLink]="['/admin/service-type']" class="list-group-item list-group-item-action list-group-item-warning">Услуги</a>
+        <a [routerLink]="['/admin/manufacturers']" class="list-group-item list-group-item-action list-group-item-warning">Производители</a>
+        <a [routerLink]="['/admin/repairCategories']" class="list-group-item list-group-item-action list-group-item-warning">Категории</a>
+        <a [routerLink]="['/admin/equipmentTypes']" class="list-group-item list-group-item-action list-group-item-warning">Типы оборудования</a>
+        <a [routerLink]="['/admin/equipments']" class="list-group-item list-group-item-action list-group-item-warning">Оборудование</a>
+      </div>
+    </div>
+    <div class="col-sm-8 col-md-8 col-lg-10 col-xl-10">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

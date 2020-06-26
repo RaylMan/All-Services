@@ -1,0 +1,55 @@
+<h1>Типы услуг</h1>
+<input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
+<div class="table-responsive">
+  <table *ngIf="tableMode; else create" class="table table-striped">
+    <thead>
+      <tr>
+        <td>Название</td>
+        <td>Описание</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of typesList">
+        <ng-template [ngIf]="type?.id != t.id" [ngIfElse]="edit">
+          <td>{{t.name}}</td>
+          <td>{{t.description}}</td>
+          <td>
+            <button class="btn btn-sm btn-primary m-1" (click)="editType(t)">Изменить</button>
+            <button class="btn btn-sm btn-danger m-1" (click)="delete(t)">Удалить</button>
+          </td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ 
+  <ng-template #edit>
+    <td>
+      <input type="text" [(ngModel)]="type.name" class="form-control" />
+    </td>
+    <td>
+      <input type="text" [(ngModel)]="type.description" class="form-control" />
+    </td>
+    <td>
+      <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success m-1" />
+      <input type="button" value="Отмена" (click)="cancel()" class="btn btn-sm btn-warning m-1" />
+    </td>
+  </ng-template>
+
+
+  <ng-template #create>
+    <div class="form-group m-1">
+      <label>Название Услуги</label>
+      <input type="text" [(ngModel)]="type.name" class="form-control" />
+    </div>
+    <div class="form-group m-1">
+      <label>Описание</label>
+      <input type="text" [(ngModel)]="type.description" class="form-control" />
+    </div>
+    <div>
+      <input type="button" value="Сохранить" (click)="save()" class="btn btn-success m-1" />
+      <input type="button" value="Отмена" (click)="cancel()" class="btn btn-warning m-1" />
+    </div>
+  </ng-template>
+
