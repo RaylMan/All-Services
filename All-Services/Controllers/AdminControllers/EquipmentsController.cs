@@ -28,16 +28,6 @@ namespace All_Services.Controllers.AdminControllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Equipment>>> GetEquipment()
         {
-            //var result = from equipment in _context.Equipment
-            //             join manufacturer in _context.Manufacturers on equipment.ManufacturerId equals manufacturer.Id
-            //             join equipmentType in _context.EquipmentTypes on equipment.TypeId equals equipmentType.Id
-            //             select new 
-            //             {
-            //                 Id = equipment.Id,
-            //                 Model = equipment.Model,
-            //                 Manufacturer = manufacturer.Name,
-            //                 EquipmentType = equipmentType.Name
-            //             }; .Include(e => e.Manufacturer)
             var result = await _context.Equipment.Include(t => t.EquipmentType).Include(e => e.Manufacturer).ToListAsync();
             return result;
         }

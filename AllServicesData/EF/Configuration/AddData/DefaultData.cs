@@ -48,19 +48,17 @@ namespace AllServicesData.EF.Configuration.AddData
                 new ServiceType[]
                 {
                     new ServiceType {Id =1, Name = "Смартфоны и гаджеты"},
-                    new ServiceType {Id =2, Name = "Телевизоры, аудио, видео"},
-                    new ServiceType {Id =3, Name = "Компьютеры и ноутбуки"},
-                    new ServiceType {Id =4, Name = "Техника для офиса"},
-                    new ServiceType {Id =5, Name = "Техника для дома"},
-                    new ServiceType {Id =6, Name = "Техника для кухни"},
-                    new ServiceType {Id =7, Name = "Красота и здоровье"},
-                    new ServiceType {Id =8, Name = "Фото и видео"},
-                    new ServiceType {Id =9, Name = "Игры и развлечения"},
-                    new ServiceType {Id =10, Name = "Бензо-электроинструмент"},
-                    new ServiceType {Id =11, Name = "Автомобили и мотоциклы"},
-                    new ServiceType {Id =12, Name = "Велосипеды и самокаты"},
-                    new ServiceType {Id =13, Name = "Строительство"},
-                    new ServiceType {Id =14, Name = "Сантехника"}
+                    new ServiceType {Id =2, Name = "Техника для кухни"},
+                    new ServiceType {Id =3, Name = "Техника для дома"},
+                    new ServiceType {Id =4, Name = "Компьютеры и ноутбуки"},
+                    new ServiceType {Id =5, Name = "Телевизоры, аудио, видео"},
+                    new ServiceType {Id =6, Name = "Фото и видео"},
+                    new ServiceType {Id =7, Name = "Велосипеды и самокаты"},
+                    new ServiceType {Id =8, Name = "Автомобили и мотоциклы"},
+                    new ServiceType {Id =9, Name = "Сантехника"},
+                    new ServiceType {Id =10, Name = "Строительство"},
+                    new ServiceType {Id =11, Name = "Бензо-электроинструмент"},
+                    new ServiceType {Id =12, Name = "Игры и развлечения"}
                 });
         }
     }

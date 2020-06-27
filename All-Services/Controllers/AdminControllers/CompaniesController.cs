@@ -60,8 +60,8 @@ namespace All_Services.Controllers.AdminControllers
             var addresses = await _context.CompanyAddresses.Where(c => c.CompanyId == id).ToListAsync();
             _context.CompanyAddresses.RemoveRange(addresses);
             
-            var types = await _context.CompanyServiceTypes.Where(c => c.CompanyId == id).ToListAsync();
-            _context.CompanyServiceTypes.RemoveRange(types);
+            var types = await _context.CompanyServiceType.Where(c => c.CompanyId == id).ToListAsync();
+            _context.CompanyServiceType.RemoveRange(types);
 
             _context.Companies.Remove(company);
             await _context.SaveChangesAsync();

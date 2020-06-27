@@ -13,6 +13,6 @@ namespace AllServicesData.Model
         public string Adress { get; set; }
         public string Token { get; set; }
         public virtual Access Access { get; set; }
-        public virtual ICollection<Company> Comanies { get; set; }
+        public virtual ICollection<Company> Companies { get; set; }
     }
 }

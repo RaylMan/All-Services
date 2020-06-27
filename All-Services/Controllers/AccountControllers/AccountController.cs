@@ -224,8 +224,8 @@ namespace All_Services.Controllers.AccountControllers
             {
                 if (id != 0)
                 {
-                    CompanyServiceTypes newTypes = new CompanyServiceTypes { ServiceTypeId = id, CompanyId = companyId };
-                    await db.CompanyServiceTypes.AddAsync(newTypes);
+                    CompanyServiceType newTypes = new CompanyServiceType { ServiceTypeId = id, CompanyId = companyId };
+                    await db.CompanyServiceType.AddAsync(newTypes);
                 }
             }
         }

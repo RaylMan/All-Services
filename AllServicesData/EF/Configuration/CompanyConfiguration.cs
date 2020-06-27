@@ -33,7 +33,7 @@ namespace AllServicesData.EF.Configuration
                    .IsRequired()
                    .HasDefaultValue(0);
             builder.HasOne(d => d.User)
-                   .WithMany(p => p.Comanies)
+                   .WithMany(p => p.Companies)
                    .OnDelete(DeleteBehavior.Restrict)
                    .HasConstraintName("FK_Company_User");
         }

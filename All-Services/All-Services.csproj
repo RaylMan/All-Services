@@ -51,7 +51,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\assets\images\NewFolder\" />
+    <Folder Include="ClientApp\src\assets\images\head-types\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 

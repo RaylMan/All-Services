@@ -8,6 +8,6 @@ namespace AllServicesData.Model
         public string Description { get; set; }
         public virtual ICollection<EquipmentType> EquipmentTypes { get; set; }
         public virtual ICollection<RepairCategory> RepairCategories { get; set; }
-        public virtual ICollection<CompanyServiceTypes> CompanyServiceTypes { get; set; }
+        public virtual ICollection<CompanyServiceType> CompanyServiceType { get; set; }
     }
 }

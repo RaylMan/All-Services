@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AllServicesData.Model
 {
-    public class CompanyServiceTypes: EntityBase
+    public class CompanyServiceType : EntityBase
     {
         public int CompanyId { get; set; }
         public int ServiceTypeId { get; set; }

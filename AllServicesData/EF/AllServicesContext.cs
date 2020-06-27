@@ -19,7 +19,7 @@ namespace AllServicesData.EF
         public DbSet<User> Users { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyAddress> CompanyAddresses { get; set; }
-        public DbSet<CompanyServiceTypes> CompanyServiceTypes { get; set; }
+        public DbSet<CompanyServiceType> CompanyServiceType { get; set; }
         public DbSet<CompanyImage> CompanyImages { get; set; }
         public DbSet<EquipmentType> EquipmentTypes { get; set; }
         public DbSet<ServiceType> ServiceTypes { get; set; }

@@ -7,9 +7,9 @@ using System.Text;
 
 namespace AllServicesData.EF.Configuration
 {
-    public class CompanyServiceTypesConfiguration : IEntityTypeConfiguration<CompanyServiceTypes>
+    public class CompanyServiceTypesConfiguration : IEntityTypeConfiguration<CompanyServiceType>
     {
-        public void Configure(EntityTypeBuilder<CompanyServiceTypes> builder)
+        public void Configure(EntityTypeBuilder<CompanyServiceType> builder)
         {
             builder.Property(e => e.ServiceTypeId)
                    .HasColumnName("Service_Type_Id")
@@ -20,13 +20,13 @@ namespace AllServicesData.EF.Configuration
                    .IsRequired();
 
             builder.HasOne(d => d.Company)
-                   .WithMany(p => p.CompanyServiceTypes)
+                   .WithMany(p => p.CompanyServiceType)
                    .OnDelete(DeleteBehavior.Restrict)
-                   .HasConstraintName("FK_CompanyServiceTypes_Service_Type");
+                   .HasConstraintName("FK_CompanyServiceType_Service_Type");
             builder.HasOne(d => d.ServiceType)
-                   .WithMany(p => p.CompanyServiceTypes)
+                   .WithMany(p => p.CompanyServiceType)
                    .OnDelete(DeleteBehavior.Restrict)
-                   .HasConstraintName("FK_CompanyServiceTypes_User");
+                   .HasConstraintName("FK_CompanyServiceType_User");
         }
     }
 }
