@@ -2,24 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Company } from '../../Model/Company/Company';
-import { ServicesDataService } from '../Data/Services/services.service';
+import { SearchDataService } from '../Data/Search/search.service';
+import { ImagesDataService } from '../Data/Files/images.service';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-services',
-  templateUrl: './services.component.html',
-  providers: [ServicesDataService]
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css'],
+  providers: [SearchDataService]
 })
-export class ServicesComponent implements OnInit {
-  
+export class SearchComponent implements OnInit {
+
   id: any;
   private subscription: Subscription;
+  testCompany: Company;
   companies: Company[]
-  constructor(private route: ActivatedRoute, private dataService: ServicesDataService) {
+  constructor(private route: ActivatedRoute, private dataService: SearchDataService) {
 
     //this.subscription = route.params.subscribe(params => this.id = params['id']);
   }
-  
+
   ngOnInit(): void {
     this.route.paramMap.pipe(
       switchMap(params => params.getAll('id'))
@@ -29,6 +32,11 @@ export class ServicesComponent implements OnInit {
   }
   loadCompanies() {
     this.dataService.getCompanyByServiceType(this.id)
-      .subscribe((data: Company[]) => this.companies = data);
+      .subscribe((data: Company[]) =>
+      {
+        this.testCompany = data[0]
+        this.companies = data;
+        console.log(data);
+      });
   }
 }

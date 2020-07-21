@@ -6,13 +6,12 @@ import { CompanyServiceType } from "src/Model/Company/CompanyServiceType";
 export class Company {
   constructor(
     public id?: number,
-    public UserId?: number,
+    public userId?: number,
     public name?: string,
     public email?: string,
-    public passwordHash?: string,
     public logoUrl?: string,
     public webSiteUrl?: string,
-    public Description?: string,
+    public description?: string,
     public smallDescription?: string,
     public popularity?: number,
     public likes?: number,
@@ -20,6 +19,7 @@ export class Company {
     public user?: User,
     public telephones?: Telephones[],
     public companyAddress?: CompanyAddress[],
-    public companyServiceType?: CompanyServiceType[]
+    public companyServiceType?: CompanyServiceType[],
+    public logoUrlFromServer?: string
   ) { }
 }

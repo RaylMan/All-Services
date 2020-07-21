@@ -14,3 +14,6 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+.popularity-block{
+    margin: 5px;
+}

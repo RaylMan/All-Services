@@ -6,7 +6,7 @@ import { JwtModule } from "@auth0/angular-jwt";
 import { appRoutingModule } from './app.routing';
 
 import { CompanyComponent } from './Company/company.component';
-import { ServicesComponent } from './Services/services.component';
+import { SearchComponent } from './Search/search.component';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -56,7 +56,7 @@ export function tokenGetter() {
     CompanyRegisterComponent,
     CompaniesComponent,
     CompanyComponent,
-    ServicesComponent
+    SearchComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

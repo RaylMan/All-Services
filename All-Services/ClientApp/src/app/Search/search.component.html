@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="comp-cart page-block row align-items-center" *ngFor="let c of companies">
+    <div class="comp-cart-logo">
+      <img src="{{c.logoUrl}}" alt=""/>
+    </div>
+    <div class="comp-cart-info b ">
+      <h5 class="align-center ">{{c.name}}</h5>
+      <p><b>Описание: </b>{{c.smallDescription}}</p>
+      <p><b>Телефон: </b>{{c.telephones[0].telephone}}</p>
+      <p><b>Веб сайт: <a href="{{c.webSiteUrl}}">{{c.webSiteUrl}}</a></b> </p>
+    </div>
+    <div class="popularity-block b">
+      <input type="button"  value="Like"/>
+      <input type="button"  value="DisLike"/>
+    </div>
+  </div>
+</div>

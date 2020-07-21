@@ -5,9 +5,9 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 @Injectable()
-export class ServicesDataService {
+export class SearchDataService {
 
-  private url = "/api/services";
+  private url = "/api/search";
 
   constructor(private http: HttpClient) {
   }

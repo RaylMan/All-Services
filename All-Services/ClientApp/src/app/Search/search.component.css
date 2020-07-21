@@ -1,0 +1,28 @@
+.comp-cart {
+  /*position: relative;*/
+  margin: 10px 0;
+  min-height: 120px;
+}
+
+.b {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.comp-cart-logo {
+  margin: 0 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.comp-cart-info {
+  word-break: break-all;
+  padding: 5px;
+  height: 100%;
+}
+
+.popularity-block {
+  /*position: absolute;*/
+  right: 10px;
+  bottom: 10px;
+  margin: 5px;
+}

@@ -21,5 +21,6 @@ namespace AllServicesData.Model
         public virtual ICollection<CompanyAddress> CompanyAddresses { get; set; }
         public virtual ICollection<CompanyImage> CompanyImages { get; set; }
         public virtual ICollection<CompanyServiceType> CompanyServiceType { get; set; }
+        public virtual ICollection<CompanyManufacturer> CompanyManufacturers { get; set; }
     }
 }

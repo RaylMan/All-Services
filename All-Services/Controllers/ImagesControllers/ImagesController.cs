@@ -27,26 +27,6 @@ namespace All_Services.Controllers.ImageControllers
             _appEnvironment = appEnvironment;
         }
 
-        // GET: api/Images
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Image>>> GetImages()
-        {
-            return await _context.Images.ToListAsync();
-        }
-
-        // GET: api/Images/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Image>> GetImage(int id)
-        {
-            var Image = await _context.Images.FindAsync(id);
-
-            if (Image == null)
-            {
-                return NotFound();
-            }
-
-            return Image;
-        }
         [HttpGet("defaultImage")]
         public async Task<ActionResult<Image>> GetDefaultImage()
         {

@@ -9,7 +9,7 @@ import { CompanyRegisterComponent } from './Authorization/Register/companyRegist
 import { AccountComponent } from './Authorization/Account/account.component';
 
 import { CompanyComponent } from './Company/company.component';
-import { ServicesComponent } from './Services/services.component';
+import { SearchComponent } from './Search/search.component';
 
 
 import { AdminComponent } from './admin/admin.component';
@@ -48,7 +48,7 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent, children: adminRoutes, canActivate: [AuthGuard], data: { roles: [AccessEnum.Admin] } },
   { path: 'company', component: CompanyComponent, children: companyRoutes, canActivate: [AuthGuard], data: { roles: [AccessEnum.Company] } },
   { path: 'account', component: AccountComponent, children: adminRoutes, canActivate: [AuthGuard] },
-  { path: 'services/:id', component: ServicesComponent }
+  { path: 'search/:id', component: SearchComponent }
 ];
 
 export const appRoutingModule = RouterModule.forRoot(appRoutes);

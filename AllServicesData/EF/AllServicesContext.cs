@@ -20,6 +20,7 @@ namespace AllServicesData.EF
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyAddress> CompanyAddresses { get; set; }
         public DbSet<CompanyServiceType> CompanyServiceType { get; set; }
+        public DbSet<CompanyManufacturer> CompanyManufacturers { get; set; }
         public DbSet<CompanyImage> CompanyImages { get; set; }
         public DbSet<EquipmentType> EquipmentTypes { get; set; }
         public DbSet<ServiceType> ServiceTypes { get; set; }
@@ -30,9 +31,7 @@ namespace AllServicesData.EF
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //var connectionString = @"Server=DESKTOP-D6JRGFG\\SQLEXPRESS;Database=AllServices; Integrated Security=true;
-                //MultipleActiveResultSets=True; App=EntityFramework";
-                var connectionString = @"Server=DESKTOP-D6JRGFG\\SQLEXPRESS;Database=AllServices;Trusted_Connection=True;";
+                var connectionString = @"Server=DESKTOP-D6JRGFG\SQLEXPRESS;Database=AllServices;Trusted_Connection=True;";
                 optionsBuilder.UseSqlServer(connectionString, options => options.EnableRetryOnFailure());
             }
         }
@@ -51,6 +50,7 @@ namespace AllServicesData.EF
             modelBuilder.ApplyConfiguration(new ManufacturerConfiguration());
             modelBuilder.ApplyConfiguration(new EquipmentConfiguration());
             modelBuilder.ApplyConfiguration(new CompanyServiceTypesConfiguration());
+            modelBuilder.ApplyConfiguration(new CompanyManufacturerConfiguration());
 
             new DefaultData(modelBuilder);
             new TestData(modelBuilder);

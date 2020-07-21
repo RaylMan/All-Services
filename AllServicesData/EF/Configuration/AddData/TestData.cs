@@ -26,6 +26,7 @@ namespace AllServicesData.EF.Configuration.AddData
             AddCompanies();
             AddTelephones();
             AddCompaniesTypes();
+            AddCompaniesManufacturers();
         }
         private void AddUsers()
         {
@@ -111,6 +112,29 @@ namespace AllServicesData.EF.Configuration.AddData
             return telephones;
         }
         #endregion
+
+        #region Companies Manufacturers
+        private void AddCompaniesManufacturers()
+        {
+            _modelBuilder.Entity<CompanyManufacturer>().HasData(GenerateCompaniesManufacturers());
+        }
+
+        private List<CompanyManufacturer> GenerateCompaniesManufacturers()
+        {
+            List<CompanyManufacturer> companyManufacturer = new List<CompanyManufacturer>();
+            int Id = 1;
+            for (int i = 1; i < 51; i++)
+            {
+                int count = RandomInt(7);
+                for (int j = 0; j < count; j++)
+                {
+                    companyManufacturer.Add(new CompanyManufacturer { Id = Id++, CompanyId = i, ManufacturerId = RandomInt(53) });
+                }
+            }
+            return companyManufacturer;
+        }
+        #endregion
+
         private static Random random = new Random();
         public static string RandomString(int length)
         {
