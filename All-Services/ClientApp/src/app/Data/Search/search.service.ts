@@ -15,4 +15,7 @@ export class SearchDataService {
   getCompanyByServiceType(id: number) {
     return this.http.get(this.url + '/' + id);
   }
+  searchCompanies(text: string, index: number, count: number) {
+    return this.http.get(this.url + '/search?text=' + text + '&index=' + index + '&count=' + count);
+  }
 }

@@ -44,8 +44,10 @@ namespace All_Services
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            //services.AddDbContext<AllServicesContext>(options =>
+            //            options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddDbContext<AllServicesContext>(options =>
-                        options.UseSqlServer(Configuration.GetConnectionString("Default")));
+                        options.UseSqlServer(Configuration.GetConnectionString("Work")));
 
             services.AddAuthentication(opt =>
             {

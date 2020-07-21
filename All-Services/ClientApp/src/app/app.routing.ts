@@ -48,7 +48,8 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent, children: adminRoutes, canActivate: [AuthGuard], data: { roles: [AccessEnum.Admin] } },
   { path: 'company', component: CompanyComponent, children: companyRoutes, canActivate: [AuthGuard], data: { roles: [AccessEnum.Company] } },
   { path: 'account', component: AccountComponent, children: adminRoutes, canActivate: [AuthGuard] },
-  { path: 'search/:id', component: SearchComponent }
+  { path: 'search/:id', component: SearchComponent },
+  { path: 'search/search?text=:text&index=:index&count=:count', component: SearchComponent }
 ];
 
 export const appRoutingModule = RouterModule.forRoot(appRoutes);
