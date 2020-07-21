@@ -17,35 +17,42 @@ export class SearchComponent implements OnInit {
 
   id: any;
   searchText: string;
-  private subscription: Subscription;
-  testCompany: Company;
+  searchIndex: number;
+  searchCount: number;
   companies: SearchCompanyViewModel[]
   constructor(private route: ActivatedRoute, private dataService: SearchDataService) {
   }
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
-      switchMap(params => params.getAll('id'))
-    )
-      .subscribe(data => { this.id = data; console.log(data + '---') });
-    this.loadCompanies();
+      switchMap(params => params.getAll('id')))
+      .subscribe(data => { this.id = data;});
+
+    this.route.queryParams.subscribe(params => {
+      this.searchText = params['text'];
+      this.searchIndex = params['index'];
+      this.searchCount = params['count'];
+    });
+    if (this.id > 0) {
+      this.loadCompanies();
+    }
+    else {
+      this.loadCompaniesSearch(this.searchText, this.searchIndex, this.searchCount);
+    }
+    
   }
   loadCompanies() {
     this.dataService.getCompanyByServiceType(this.id)
       .subscribe((data: SearchCompanyViewModel[]) =>
       {
-        this.testCompany = data[0]
         this.companies = data;
-        console.log(data);
       });
   }
-  loadCompaniesSearch() {
-    this.dataService.searchCompanies('',0,20)
+  loadCompaniesSearch(text: string, index: number, count: number ) {
+    this.dataService.searchCompanies(this.searchText, index, count)
       .subscribe((data: SearchCompanyViewModel[]) =>
       {
-        this.testCompany = data[0]
         this.companies = data;
-        console.log(data);
       });
   }
 }

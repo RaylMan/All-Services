@@ -31,8 +31,8 @@ namespace AllServicesData.EF
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //var connectionString = @"Server=DESKTOP-D6JRGFG\SQLEXPRESS;Database=AllServices;Trusted_Connection=True;";
-                var connectionString = @"Server=ANDREY\SQLEXPRESS;Database=AllServices;Trusted_Connection=True;"; // User Id=service;password=password2020;Trusted_Connection=False;MultipleActiveResultSets=true;";
+                var connectionString = @"Server=DESKTOP-D6JRGFG\SQLEXPRESS;Database=AllServices;Trusted_Connection=True;";
+                //var connectionString = @"Server=ANDREY\SQLEXPRESS;Database=AllServices;Trusted_Connection=True;"; // User Id=service;password=password2020;Trusted_Connection=False;MultipleActiveResultSets=true;";
                 optionsBuilder.UseSqlServer(connectionString, options => options.EnableRetryOnFailure());
             }
         }

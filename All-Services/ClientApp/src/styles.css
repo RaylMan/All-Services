@@ -52,3 +52,11 @@ input.ng-invalid.ng-touched {
   border-radius: 4px;
   box-shadow: 0 1px 0 0 #d3d9de
 }
+.header-link {
+  color: black;
+  text-decoration: none;
+}
+  .header-link :hover {
+    color: black;
+    text-decoration: none;
+  }

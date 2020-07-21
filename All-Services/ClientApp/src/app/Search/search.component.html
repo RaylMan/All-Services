@@ -1,17 +1,19 @@
 <div class="container">
-  <div class="comp-cart page-block row align-items-center" *ngFor="let c of companies">
+  <div class="comp-cart page-block row" *ngFor="let c of companies">
     <div class="comp-cart-logo">
-      <img src="{{c.logoUrl}}" alt=""/>
+      <img src="{{c.logoUrl}}" alt="" />
     </div>
-    <div class="comp-cart-info b ">
-      <h5 class="align-center ">{{c.name}}</h5>
+    <div class="comp-cart-info">
+      <h5 class="align-center "><a [routerLink]="['/login']" class="header-link">{{c.name}}</a></h5>
       <p><b>Описание: </b>{{c.desc}}</p>
-      <p><b>Телефон: </b>{{c.telephone}}</p>
-      <p><b>Веб сайт: <a href="{{c.webSiteUrl}}">{{c.webSiteUrl}}</a></b> </p>
+      <p><b>Веб сайт: <a href="{{c.webSiteUrl}}">{{c.webSiteUrl}}</a></b></p>
     </div>
-    <div class="popularity-block b">
-      <input type="button"  value="Like"/>
-      <input type="button"  value="DisLike"/>
+    <div class="comp-cart-info" style="margin-bottom: 40px">
+      <p><b>Телефон: </b>{{c.telephone}}</p>
+    </div>
+    <div class="popularity-block">
+      <button><img src="assets/images/NewFolder/like.png" class="popularity-img" alt="like" /></button>
+      <button><img src="assets/images/NewFolder/dislike.png" class="popularity-img" alt="dislike" /></button>
     </div>
   </div>
 </div>
