@@ -1,4 +1,16 @@
 <div class="container">
+  <div class="row justify-content-center m-2">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      <form class="input-group mt-2" [formGroup]="searchForm" (ngSubmit)="search()">
+        <input class="form-control" type="text" formControlName="searchText" placeholder="  Поиск" />
+        <div class="input-group-append">
+          <input class="btn btn-outline-secondary" type="submit" value="Искать" />
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="isNotFound" class="error-text"><p>Ничего не найдено</p></div>
+
   <div class="comp-cart page-block row" *ngFor="let c of companies">
     <div class="comp-cart-logo">
       <img src="{{c.logoUrl}}" alt="" />
@@ -11,9 +23,18 @@
     <div class="comp-cart-info" style="margin-bottom: 40px">
       <p><b>Телефон: </b>{{c.telephone}}</p>
     </div>
-    <div class="popularity-block">
-      <button><img src="assets/images/NewFolder/like.png" class="popularity-img" alt="like" /></button>
-      <button><img src="assets/images/NewFolder/dislike.png" class="popularity-img" alt="dislike" /></button>
+    <div class="popularity-block row">
+      <div class="column">
+        <button class="popularity-block-button"><img src="assets/images/NewFolder/like.png" class="popularity-img" alt="like"/></button>
+        <p class="text-center">{{c.likes}}</p>
+      </div>
+      <div class="column">
+        <button class="popularity-block-button"><img src="assets/images/NewFolder/dislike.png" class="popularity-img" alt="dislike"/></button>
+        <p class="text-center">{{c.disLikes}}</p>
+      </div>
     </div>
+  </div>
+  <div class="row justify-content-center">
+    <input class="btn btn-outline-secondary ml-1" *ngFor="let page of pages" type="button" value="{{page}}" (click)="ChangePage(page)" />
   </div>
 </div>

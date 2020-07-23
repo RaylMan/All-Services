@@ -68,10 +68,7 @@ namespace All_Services.Controllers.ServicesControllers
                              Telephone = comp.Telephones.First().Telephone
                          })
                          .Skip(index).Take(count).Distinct().ToListAsync();
-            if(result == null)
-            {
-                return NotFound();
-            }
+            
             return result;
         }
     }

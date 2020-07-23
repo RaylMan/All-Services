@@ -26,8 +26,5 @@ export class HomeComponent implements OnInit {
         count: 20
       }
     });
-
-    //this.dataService.searchCompanies(this.searchForm.controls.searchText.value, 0, 20)
-    //  .subscribe(data => console.log(data));
   }
 }

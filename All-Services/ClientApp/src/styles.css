@@ -60,3 +60,13 @@ input.ng-invalid.ng-touched {
     color: black;
     text-decoration: none;
   }
+.error-text {
+  margin: 10px;
+  font-size: 25px;
+  color: red;
+  text-align: center;
+}
+
+.border-radius{
+    border-radius: 6px;
+}
