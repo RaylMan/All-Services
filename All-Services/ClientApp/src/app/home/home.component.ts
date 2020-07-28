@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
       queryParams: {
         'text': this.searchForm.controls.searchText.value,
         index: 0,
-        count: 20
+        count: 10
       }
     });
   }

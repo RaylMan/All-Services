@@ -1,14 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router, Params, RouteReuseStrategy, NavigationEnd} from '@angular/router';
-
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, AsyncValidatorFn } from "@angular/forms";
-import { Company } from '../../Model/Company/Company';
 import { SearchCompanyViewModel } from 'src/ViewModels/Company/searchCompanyViewModel';
 import { SearchDataService } from '../Data/Search/search.service';
-import { ImagesDataService } from '../Data/Files/images.service';
 import { switchMap } from 'rxjs/operators';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators/';
 
 @Component({
   selector: 'app-search',
@@ -16,13 +11,13 @@ import { takeUntil } from 'rxjs/operators/';
   styleUrls: ['./search.component.css'],
   providers: [SearchDataService]
 })
-export class SearchComponent implements OnInit  {
+export class SearchComponent implements OnInit {
   isNotFound: boolean;
   id: any;
   searchText: string;
   searchIndex: number;
-  searchCount: number;
-  pages: number[] = [1,2,3,4,5];
+  searchCount: number ;
+  pages: number[] = [1];
   companies: SearchCompanyViewModel[]
   searchForm: FormGroup;
 
@@ -43,7 +38,7 @@ export class SearchComponent implements OnInit  {
       this.searchCount = params['count'];
     });
     if (this.id > 0) {
-      this.loadCompanies();
+      this.loadCompanies(this.id, 0, this.searchCount);
     }
     else {
       this.loadCompaniesSearch(this.searchText, this.searchIndex, this.searchCount);
@@ -54,20 +49,28 @@ export class SearchComponent implements OnInit  {
     });
   }
 
-  loadCompanies() {
-    this.dataService.getCompanyByServiceType(this.id)
-      .subscribe((data: SearchCompanyViewModel[]) => {
-        this.companies = data;
-      });
+  loadCompanies(id: number, index: number, count: number) {
+    this.dataService.getCompanyByServiceTypeCount(id).subscribe(companiesCount => {
+      this.createPagesList(companiesCount);
+      this.dataService.getCompanyByServiceType(id, index, count)
+        .subscribe((data: SearchCompanyViewModel[]) => {
+          this.companies = data;
+        });
+    });
   }
   loadCompaniesSearch(text: string, index: number, count: number) {
-    this.dataService.searchCompanies(this.searchText, index, count)
-      .subscribe((data: SearchCompanyViewModel[]) => {
-        this.companies = data;
-        if (data.length === 0) {
-          this.isNotFound = true;
-        }
-      });
+    this.dataService.searchCompaniesCount(text).subscribe(companiesCount => {
+      this.createPagesList(companiesCount);
+      this.dataService.searchCompanies(text, index, count)
+        .subscribe((data: SearchCompanyViewModel[]) => {
+          this.companies = data;
+          if (data.length === 0) {
+            this.isNotFound = true;
+          }
+        });
+    });
+
+
   }
   newRoute(text: string, index: number, count: number) {
     this.pageRouter.navigateByUrl('/', { skipLocationChange: true }).then(() => {
@@ -82,9 +85,24 @@ export class SearchComponent implements OnInit  {
   }
 
   search() {
-    this.newRoute(this.searchForm.controls.searchText.value, 0, 20);
+    this.newRoute(this.searchForm.controls.searchText.value, 0, this.searchCount);
   }
-  ChangePage(page: number) {
-    
+  changePage(page: number) {
+    let index = (page - 1) * this.searchCount;
+
+    if (this.id > 0) {
+      console.log(this.id + ' ' + index + ' ' + this.searchCount )
+      this.loadCompanies(this.id, index, this.searchCount)
+    }
+    else {
+      this.loadCompaniesSearch(this.searchText, index, this.searchCount);
+    }
+  }
+  createPagesList(companiesCount: any) {
+    let pagesCount = Math.ceil(companiesCount / this.searchCount);
+    this.pages = [];
+    for (var i = 1; i <= pagesCount; i++) {
+      this.pages.push(i);
+    }
   }
 }

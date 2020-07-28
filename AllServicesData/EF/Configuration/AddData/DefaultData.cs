@@ -84,7 +84,7 @@ namespace AllServicesData.EF.Configuration.AddData
                     new Manufacturer { Id = 15, Name = "Intel" },
                     new Manufacturer { Id = 16, Name = "AMD" },
                     new Manufacturer { Id = 17, Name = "Nvidia" },
-                    new Manufacturer { Id = 18, Name = "Samsung" },
+                    new Manufacturer { Id = 18, Name = "Candy" },
                     new Manufacturer { Id = 19, Name = "LG" },
                     new Manufacturer { Id = 20, Name = "Canon" },
                     new Manufacturer { Id = 21, Name = "Nikon" },
